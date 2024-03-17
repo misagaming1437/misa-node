@@ -1,7 +1,10 @@
-sudo ln -s /cess/.hedge ~
+# Create link
+
+    sudo ln -s /cess/.hedge ~
 
 Create an Environment File
 Create a file named .env and specify the necessary environment variables. Here is an example:
+
 
 cd ~/.hedge
 sudo nano .env
