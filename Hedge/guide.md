@@ -50,7 +50,7 @@ Stop docker
 
 edit 
 
-        sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uhedge\"/;" /cess/.hedge/berberis-1/config/app.toml
+    sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uhedge\"/;" /cess/.hedge/berberis-1/config/app.toml
     peers=""
     sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" /cess/.hedge/berberis-1/config/config.toml
     seeds="7879005ab63c009743f4d8d220abd05b64cfee3d@54.92.167.150:26656"
