@@ -42,4 +42,22 @@ Create a file named .env and specify the necessary environment variables. Here i
 
 Running the Docker Container
 
-    docker run -d -p 9094:9094 -p 26663:26663 -p 26664:26664 -p 1318:1318 -v /cess/.hedge:/root/hedge --env-file  /cess/.hedge/.env  --name hedge  hedgeblock/berberis:v0.1 
+    docker run -d -p 9094:9090 -p 26663:26657 -p 26664:26656 -p 1318:1317 -v /cess/.hedge:/root/hedge --env-file  /cess/.hedge/.env  --name hedge  hedgeblock/berberis:v0.1
+
+Stop docker
+        
+        sudo docker stop hedge
+
+edit 
+
+        sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uhedge\"/;" /cess/.hedge/berberis-1/config/app.toml
+    peers=""
+    sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" /cess/.hedge/berberis-1/config/config.toml
+    seeds="7879005ab63c009743f4d8d220abd05b64cfee3d@54.92.167.150:26656"
+    sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" /cess/.hedge/berberis-1/config/config.toml
+    sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
+    sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
+
+    
+
+
