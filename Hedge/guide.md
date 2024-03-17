@@ -58,6 +58,10 @@ edit
     sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
     sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
 
+To run sell in docker:
+
+    docker exec -it hedge sh
+
     
 
 
