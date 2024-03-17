@@ -91,7 +91,7 @@ GetPublic key validator:
 
 Create a Validator:
 
-    docker exec -it hedge hedged tx staking create-validator --amount=1000000uhedge --pubkey=$(docker exec -it hedge hedged tendermint show-validator) --moniker="nguyentien1437" --chain-id=berberis-1 --commission-rate=0.10 --commission-max-rate=0.20 --commission-max-change-rate=0.1 --min-self-delegation=1 --from=wallet --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
+    docker exec -it hedge hedged tx staking create-validator --amount=1000000uhedge --pubkey=$(docker exec -it hedge hedged tendermint show-validator --home /root/hedge/berberis-1) --moniker="nguyentien1437" --chain-id=berberis-1 --commission-rate=0.10 --commission-max-rate=0.20 --commission-max-change-rate=0.1 --min-self-delegation=1 --from=wallet --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
 
 Withdraw rewards:
 
