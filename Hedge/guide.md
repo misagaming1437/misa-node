@@ -8,6 +8,8 @@ Create a file named .env and specify the necessary environment variables. Here i
 
     cd ~/.hedge
     sudo nano .env
+ 
+ copy   
 
     # Mandatory: Specify the RPC  value 
     RPC=https://www.rpc-berberis.hedgeblock.io
