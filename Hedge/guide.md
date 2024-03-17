@@ -70,6 +70,9 @@ Recover Existing Key
 
     docker exec -it hedge hedged keys add wallet --recover
      
+List keys:
+     docker exec -it hedge hedged keys list
+
 Delete Key
 
     docker exec -it hedge hedged keys delete wallet
