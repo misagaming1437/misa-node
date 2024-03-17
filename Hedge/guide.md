@@ -58,10 +58,69 @@ edit
     sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
     sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' /cess/.hedge/berberis-1/config/config.toml
 
-To run sell in docker:
+# To run sell in docker:
 
-    docker exec -it hedge sh
+    docker exec -it hedge hedged --help
 
+Add New Key
+
+    docker exec -it hedge hedged keys add wallet
+
+Recover Existing Key
+
+    docker exec -it hedge hedged keys add wallet --recover
+     
+Delete Key
+
+    docker exec -it hedge hedged keys delete wallet
+Export Key (save to wallet.backup)
+
+    docker exec -it hedge hedged keys export wallet
+Import Key
+
+    docker exec -it hedge hedged keys import wallet wallet.backup
+Query Wallet Balance
+
+    docker exec -it hedge hedged q bank balances $(hedged keys show wallet -a) 
+Check Balance:
+
+    ocker exec -it hedge hedged q bank balances $(hedged keys show wallet -a)
+Create a Validator:
+
+    docker exec -it hedge hedged tx staking create-validator --amount=1000000uhedge --pubkey=$(hedged tendermint show-validator) --moniker="Moniker" --chain-id=berberis-1 --commission-rate=0.10 --commission-max-rate=0.20 --commission-max-change-rate=0.1 --min-self-delegation=1 --from=wallet --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
+
+Withdraw rewards:
+
+    docker exec -it hedge hedged tx distribution withdraw-rewards $(hedged keys show wallet --bech val -a) --commission --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
     
+Delegate to your self:
+
+    docker exec -it hedge hedged tx staking delegate $(hedged keys show wallet --bech val -a) 1000000uhedge --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
+    
+Unjail:
+
+    docker exec -it hedge hedged tx slashing unjail --from wallet --chain-id=berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y 
+Get Validator Info
+
+    docker exec -it hedge hedged status 2>&1 | jq -r '.ValidatorInfo // .validator_info'
+Get Denom Info
+
+    docker exec -it hedge hedged q bank denom-metadata -oj | jq
+Get Sync Status
+
+    docker exec -it hedge hedged status 2>&1 | jq -r '.SyncInfo.catching_up // .sync_info.catching_up'
+Get Latest Height
+
+    docker exec -it hedge hedged status 2>&1 | jq -r '.SyncInfo.latest_block_height // .sync_info.latest_block_height'
+Get Peer
+
+    echo $(docker exec -it hedge hedged tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.hedge/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+Reset Node
+
+    docker exec -it hedge hedged tendermint unsafe-reset-all --home /cess/.hedge/berberis-1 --keep-addr-book
+
+
+
+
 
 
