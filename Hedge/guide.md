@@ -42,4 +42,4 @@ Create a file named .env and specify the necessary environment variables. Here i
 
 Running the Docker Container
 
-    docker run -d -p 9094:9094 -p 26663:26663 -p 26664:26664 -p 1318:1318 -v /cess/.hedge:/root/hedge --env-file  /path/to/env-file  --name hedge_node hedgeblock/berberis:v0.1 
+    docker run -d -p 9094:9094 -p 26663:26663 -p 26664:26664 -p 1318:1318 -v /cess/.hedge:/root/hedge --env-file  /cess/.hedge/.env  --name hedge  hedgeblock/berberis:v0.1 
