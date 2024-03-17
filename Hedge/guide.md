@@ -99,7 +99,7 @@ Withdraw rewards:
     
 Delegate to your self:
 
-    docker exec -it hedge hedged tx staking delegate $(hedged keys show wallet --bech val -a) 1000000uhedge --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
+    docker exec -it hedge hedged tx staking delegate $(docker exec -it hedge hedged keys show wallet --bech val -a) 1000000uhedge --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
     
 Unjail:
 
