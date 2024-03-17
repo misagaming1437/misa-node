@@ -84,7 +84,7 @@ Query Wallet Balance
     docker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a) 
 Check Balance:
 
-    ocker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a)
+    docker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a)
 GetPublic key validator:
         
     docker exec -it hedge hedged tendermint show-validator --home /root/hedge/berberis-1
