@@ -88,6 +88,10 @@ Query Wallet Balance
 Check Balance:
 
     docker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a)
+Check sync:
+    
+    docker exec -it hedge hedged status 2>&1 | jq .SyncInfo.catching_up
+
 GetPublic key validator:
         
     docker exec -it hedge hedged tendermint show-validator --home /root/hedge/berberis-1
