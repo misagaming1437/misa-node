@@ -102,7 +102,7 @@ Create a Validator:
 
 Withdraw rewards:
 
-    docker exec -it hedge hedged tx distribution withdraw-rewards $(hedged keys show wallet --bech val -a) --commission --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
+    docker exec -it hedge hedged tx distribution withdraw-rewards hedgevaloper1xe307yap7vdrs6nyah9exn5x5yxd03hqdzjny6 --commission --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
     
 Delegate to your self:
 
