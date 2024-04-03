@@ -82,12 +82,10 @@ Export Key (save to wallet.backup)
 Import Key
 
     docker exec -it hedge hedged keys import wallet wallet.backup
-Query Wallet Balance
 
-    docker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a) 
 Check Balance:
 
-    docker exec -it hedge hedged q bank balances $(docker exec -it hedge hedged keys show wallet -a)
+    docker exec -it hedge hedged q bank balances hedge1xe307yap7vdrs6nyah9exn5x5yxd03hqptz8pc
 Check sync:
     
     docker exec -it hedge hedged status 2>&1 | jq .SyncInfo.catching_up
